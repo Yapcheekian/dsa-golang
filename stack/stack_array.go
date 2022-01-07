@@ -15,6 +15,9 @@ func (s *StackArray) Push(item string) {
 }
 
 func (s *StackArray) Pop() string {
+	if s.IsEmpty() {
+		return ""
+	}
 	item := s.arr[len(s.arr)-1]
 	s.arr = s.arr[:len(s.arr)-1]
 	return item

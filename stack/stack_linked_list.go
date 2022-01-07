@@ -30,6 +30,9 @@ func (s *StackLinkedList) Push(item string) {
 }
 
 func (s *StackLinkedList) Pop() string {
+	if s.IsEmpty() {
+		return ""
+	}
 	n := s.node
 	s.node = s.node.next
 	return n.item
