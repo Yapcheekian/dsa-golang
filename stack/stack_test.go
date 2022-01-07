@@ -60,5 +60,4 @@ func TestArithmeticExpressionEvaluation(t *testing.T) {
 		}
 	}
 	assert.Equal(t, "101", vals.Pop())
-
 }
