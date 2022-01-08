@@ -17,7 +17,6 @@ func TestBinaryHeap(t *testing.T) {
 	for i := 0; i < len(h.arr); i++ {
 		assert.Equal(t, expResult[i], h.arr[i])
 	}
-	debug(h)
 	result := h.DeleteMax()
 	assert.Equal(t, 6, result)
 	result = h.DeleteMax()
