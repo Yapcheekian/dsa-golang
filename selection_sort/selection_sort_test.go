@@ -14,3 +14,10 @@ func TestSelectionSort(t *testing.T) {
 		assert.Equal(t, expOutput[i], output[i])
 	}
 }
+
+func BenchmarkSelectionSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		input := []int{3, 4, 2, 7, 4, 1, 9, 7, 8}
+		SelectionSort(input)
+	}
+}
