@@ -61,3 +61,39 @@ func TestArithmeticExpressionEvaluation(t *testing.T) {
 	}
 	assert.Equal(t, "101", vals.Pop())
 }
+
+func TestLinter(t *testing.T) {
+	stack := NewStackLinkedList()
+	f, _ := os.Open("linter.txt")
+	s := bufio.NewScanner(f)
+	s.Split(bufio.ScanRunes)
+	for s.Scan() {
+		text := s.Text()
+		switch text {
+		case "(":
+			stack.Push(text)
+		case "[":
+			stack.Push(text)
+		case "{":
+			stack.Push(text)
+		case ")":
+			el := stack.Pop()
+			if el != "(" {
+				t.Fatalf("expect to get ( but got %s", el)
+			}
+		case "]":
+			el := stack.Pop()
+			if el != "[" {
+				t.Fatalf("expect to get [ but got %s", el)
+			}
+		case "}":
+			el := stack.Pop()
+			if el != "{" {
+				t.Fatalf("expect to get { but got %s", el)
+			}
+		}
+	}
+	if !stack.IsEmpty() {
+		t.Error("expect stack to be empty")
+	}
+}
