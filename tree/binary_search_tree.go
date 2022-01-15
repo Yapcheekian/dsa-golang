@@ -44,3 +44,27 @@ func put(n *node, key, value string) *node {
 	}
 	return n
 }
+
+func (t *BST) DeleteMin() {
+	t.root = deleteMin(t.root)
+}
+
+func deleteMin(n *node) *node {
+	if n.left == nil {
+		return n.right
+	}
+	n.left = deleteMin(n.left)
+	return n
+}
+
+func (t *BST) DeleteMax() {
+	t.root = deleteMax(t.root)
+}
+
+func deleteMax(n *node) *node {
+	if n.right == nil {
+		return n.left
+	}
+	n.right = deleteMax(n.right)
+	return n
+}
