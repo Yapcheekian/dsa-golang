@@ -21,4 +21,8 @@ func TestBST(t *testing.T) {
 	assert.Equal(t, "max", bst.Get("zzz"))
 	bst.DeleteMax()
 	assert.Equal(t, "", bst.Get("zzz"))
+	bst.Set("ccc", "ccc")
+	bst.Set("www", "www")
+	bst.Set("aaa", "aaa")
+	bst.Traverse()
 }

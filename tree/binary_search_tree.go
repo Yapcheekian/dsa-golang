@@ -1,5 +1,7 @@
 package tree
 
+import "fmt"
+
 type node struct {
 	key, value  string
 	left, right *node
@@ -67,4 +69,17 @@ func deleteMax(n *node) *node {
 	}
 	n.right = deleteMax(n.right)
 	return n
+}
+
+func (t *BST) Traverse() {
+	traverse(t.root)
+}
+
+func traverse(n *node) {
+	if n == nil {
+		return
+	}
+	traverse(n.left)
+	fmt.Println(n.key)
+	traverse(n.right)
 }
